@@ -1,4 +1,4 @@
-# WebPicker / Ollama Sidebar Agent
+# WebPicker
 
 Chrome Manifest V3 side panel extension that talks only to a local Ollama instance.
 
