@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "WebPicker"
+  },
+  "extensionDescription": {
+    "message": "A sidebar AI agent that uses local Ollama models to summarize, translate, analyze, and automate the current web page."
+  },
+  "extensionActionTitle": {
+    "message": "Open WebPicker"
+  }
+}

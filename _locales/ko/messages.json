@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "WebPicker"
+  },
+  "extensionDescription": {
+    "message": "현재 웹페이지를 로컬 Ollama 모델로 요약, 번역, 화면 분석 및 자동화하는 사이드바 AI 에이전트입니다."
+  },
+  "extensionActionTitle": {
+    "message": "WebPicker 열기"
+  }
+}
