@@ -10,6 +10,7 @@ import {
 import {
   useEffect,
   useMemo,
+  useRef,
   useState,
   type FormEvent,
   type KeyboardEvent,
@@ -69,6 +70,16 @@ export function CommandComposer({
   const [modelQuery, setModelQuery] = useState("");
   const slashCommands = useMemo(() => getSlashCommands(locale), [locale]);
 
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  }, [input]);
+
   const trimmedStart = input.trimStart();
   const commandQuery = trimmedStart.slice(1).toLowerCase();
   const isCommandQuery =
@@ -105,13 +116,26 @@ export function CommandComposer({
     onSubmitText(input);
   }
 
-  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
     if (event.nativeEvent.isComposing) return;
 
     if (paletteView) {
       if (event.key === "Escape") {
         event.preventDefault();
         closePalette();
+      }
+      return;
+    }
+
+    if (event.key === "Enter") {
+      if (isCommandQuery && filteredCommands.length > 0) {
+        event.preventDefault();
+        selectCommand(filteredCommands[selectedIndex]);
+      } else if (!event.shiftKey) {
+        event.preventDefault();
+        if (canSubmit && !busy && input.trim()) {
+          onSubmitText(input);
+        }
       }
       return;
     }
@@ -127,9 +151,6 @@ export function CommandComposer({
         (current) =>
           (current - 1 + filteredCommands.length) % filteredCommands.length,
       );
-    } else if (event.key === "Enter") {
-      event.preventDefault();
-      selectCommand(filteredCommands[selectedIndex]);
     } else if (event.key === "Escape") {
       event.preventDefault();
       onInputChange("");
@@ -327,12 +348,13 @@ export function CommandComposer({
           <Plus size={19} />
         </button>
         <div className="composer-input-wrap">
-          <MessageSquareText size={17} />
-          <input
+          <textarea
+            ref={textareaRef}
             role="combobox"
             aria-expanded={isPaletteOpen}
             aria-label={t("inputLabel")}
             value={input}
+            rows={1}
             onChange={(event) => {
               setPaletteView(null);
               onInputChange(event.target.value);
