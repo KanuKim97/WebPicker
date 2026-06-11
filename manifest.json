@@ -8,6 +8,7 @@
     "default_title": "__MSG_extensionActionTitle__"
   },
   "background": {
+    "scripts": ["background.js"],
     "service_worker": "background.js",
     "type": "module"
   },
@@ -23,6 +24,10 @@
   "side_panel": {
     "default_path": "sidepanel/index.html"
   },
+  "sidebar_action": {
+    "default_panel": "sidepanel/index.html",
+    "default_title": "__MSG_extensionActionTitle__"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -30,7 +35,16 @@
       "run_at": "document_idle"
     }
   ],
-  "permissions": ["activeTab", "declarativeNetRequestWithHostAccess", "scripting", "sidePanel", "storage", "tabs"],
-  "host_permissions": ["http://localhost:11434/*", "http://127.0.0.1:11434/*"],
-  "minimum_chrome_version": "116"
+  "permissions": [
+    "activeTab",
+    "declarativeNetRequestWithHostAccess",
+    "scripting",
+    "sidePanel",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost:11434/*",
+    "http://127.0.0.1:11434/*"
+  ]
 }

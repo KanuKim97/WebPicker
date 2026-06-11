@@ -1,5 +1,7 @@
 /// <reference path="../types/chrome.d.ts" />
 
+declare const browser: any;
+
 type Locale = "ko" | "en";
 
 type ExtensionRequest =
@@ -71,11 +73,17 @@ type RoutedResponse =
   | DomTargetsResponse
   | DomActionResponse;
 
-chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch(() => undefined);
+if (typeof chrome !== "undefined" && chrome.sidePanel && chrome.sidePanel.setPanelBehavior) {
+  chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch(() => undefined);
+}
 
 chrome.action.onClicked.addListener((tab) => {
   if (tab.id) {
-    chrome.sidePanel.open({ tabId: tab.id }).catch(() => undefined);
+    if (typeof chrome !== "undefined" && chrome.sidePanel && chrome.sidePanel.open) {
+      chrome.sidePanel.open({ tabId: tab.id }).catch(() => undefined);
+    } else if (typeof browser !== "undefined" && browser.sidebarAction) {
+      browser.sidebarAction.open().catch(() => undefined);
+    }
   }
 });
 
