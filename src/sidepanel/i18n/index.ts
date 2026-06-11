@@ -21,7 +21,7 @@ const ko = {
     "당신은 로컬 Ollama로 실행되는 브라우저 사이드바 AI 에이전트입니다. 한국어로 간결하고 실용적으로 답하세요.",
   additionalRequest: "\n추가 요청: {instruction}",
   summarySystem:
-    "당신은 전문 요약가입니다. 제공된 웹페이지를 한국어로 핵심 위주로 정리하세요. 마크다운으로 작성하고 3줄 요약과 액션 아이템을 포함하세요.",
+    "당신은 전문 요약가입니다. 제공된 웹페이지를 한국어로 핵심 위주로 정리하세요. 마크다운으로 작성하고 요약과 함께 이 기사가 사용자에게 제공하고자 하는 시사점을 이야기하세요.",
   pageContent: "제목: {title}\nURL: {url}\n\n본문:\n{body}",
   naturalTranslation: "한국어로 자연스럽게",
   translationSystem:
@@ -107,7 +107,7 @@ const en: Record<TranslationKey, string> = {
     "You are a browser sidebar AI agent running on local Ollama. Respond concisely and practically in English.",
   additionalRequest: "\nAdditional request: {instruction}",
   summarySystem:
-    "You are a professional summarizer. Summarize the provided web page in English, focusing on its key points. Use Markdown and include a three-line summary and action items.",
+    "You are a professional summarizer. Summarize the provided web page in English, focusing on its key points. Write in Markdown and explain the implications or takeaways this article intends to convey to the user, along with the summary.",
   pageContent: "Title: {title}\nURL: {url}\n\nContent:\n{body}",
   naturalTranslation: "Translate naturally into English",
   translationSystem:
