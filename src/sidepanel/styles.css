@@ -820,35 +820,6 @@ button:disabled {
   animation: spin 0.9s linear infinite;
 }
 
-.entry-markdown {
-  font-size: 13px;
-  line-height: 1.65;
-  overflow-wrap: anywhere;
-}
-
-.entry-markdown :where(p, ul, ol, blockquote, pre, table) {
-  margin: 0.45rem 0;
-}
-
-.entry-markdown :where(ul, ol) {
-  margin: 0.25rem 0;
-  padding-left: 1.1rem;
-}
-
-.entry-markdown :where(ul ul, ul ol, ol ul, ol ol) {
-  margin-top: 0.25rem;
-  padding-left: 0.9rem;
-}
-
-.entry-markdown :where(li > p) {
-  margin: 0;
-}
-
-.entry-markdown :where(h1, h2, h3) {
-  margin: 0.8rem 0 0.35rem;
-  line-height: 1.25;
-}
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
