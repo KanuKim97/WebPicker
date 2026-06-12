@@ -10,14 +10,15 @@
     "build": "vite build && tsc -p tsconfig.extension.json && node scripts/copy-extension-assets.mjs"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^5.1.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "vite": "^7.2.4",
-    "typescript": "^5.9.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "lucide-react": "^0.555.0"
-  },
-  "devDependencies": {}
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  }
 }
