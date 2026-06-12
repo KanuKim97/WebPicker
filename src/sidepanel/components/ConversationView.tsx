@@ -1,3 +1,5 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Bot, Check, Loader2, Sparkles, X } from "lucide-react";
 import type { RefObject } from "react";
 import type { Translator } from "../i18n";
@@ -68,10 +70,12 @@ export function ConversationView({
                   alt={t("screenshotAlt")}
                 />
               )}
-              <pre>
-                {entry.content ||
-                  (entry.pending ? t("generating") : "")}
-              </pre>
+              <div className="entry-markdown">
+                <Markdown remarkPlugins={[remarkGfm]}>
+                  {entry.content ||
+                    (entry.pending ? t("generating") : "")}
+                </Markdown>
+              </div>
               {entry.pending && <Loader2 className="spin entry-loader" size={15} />}
             </div>
           </article>

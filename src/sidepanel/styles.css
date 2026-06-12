@@ -271,6 +271,14 @@ button:disabled {
   background: #ffffff;
   color: #283142;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025);
+  --entry-markdown-link: #2e5bd3;
+  --entry-markdown-code-bg: rgba(46, 91, 211, 0.08);
+  --entry-markdown-code-fg: #1f2937;
+  --entry-markdown-pre-bg: #171a21;
+  --entry-markdown-pre-fg: #f2f4f8;
+  --entry-markdown-quote-border: #d6dce6;
+  --entry-markdown-table-border: #dfe4ec;
+  --entry-markdown-table-head-bg: #f6f8fb;
 }
 
 .user .entry-body {
@@ -278,6 +286,14 @@ button:disabled {
   border-radius: 14px 14px 5px;
   background: #202838;
   color: #ffffff;
+  --entry-markdown-link: #b9cdfd;
+  --entry-markdown-code-bg: rgba(255, 255, 255, 0.14);
+  --entry-markdown-code-fg: #ffffff;
+  --entry-markdown-pre-bg: rgba(255, 255, 255, 0.08);
+  --entry-markdown-pre-fg: #ffffff;
+  --entry-markdown-quote-border: rgba(255, 255, 255, 0.25);
+  --entry-markdown-table-border: rgba(255, 255, 255, 0.18);
+  --entry-markdown-table-head-bg: rgba(255, 255, 255, 0.08);
 }
 
 .entry-title {
@@ -288,13 +304,159 @@ button:disabled {
   letter-spacing: 0.02em;
 }
 
-.entry-body pre {
-  margin: 0;
-  overflow-wrap: anywhere;
-  white-space: pre-wrap;
-  font-family: inherit;
+.entry-markdown {
+  display: block;
+  min-width: 0;
+  color: inherit;
   font-size: 13px;
-  line-height: 1.58;
+  line-height: 1.62;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.entry-markdown > :first-child {
+  margin-top: 0;
+}
+
+.entry-markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.entry-markdown :where(p, ul, ol, blockquote, pre, table, hr) {
+  margin: 0.5rem 0;
+}
+
+.entry-markdown :where(h1, h2, h3, h4, h5, h6) {
+  margin: 0.75rem 0 0.35rem;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.entry-markdown h1 {
+  font-size: 1.15rem;
+}
+
+.entry-markdown h2 {
+  font-size: 1.05rem;
+}
+
+.entry-markdown h3 {
+  font-size: 0.98rem;
+}
+
+.entry-markdown h4,
+.entry-markdown h5,
+.entry-markdown h6 {
+  font-size: 0.94rem;
+}
+
+.entry-markdown :where(ul, ol) {
+  margin: 0.35rem 0;
+  padding-inline-start: 1rem;
+}
+
+.entry-markdown :where(ul ul, ul ol, ol ul, ol ol) {
+  margin-top: 0.25rem;
+  padding-inline-start: 0.85rem;
+}
+
+.entry-markdown :where(li) {
+  margin: 0.15rem 0;
+}
+
+.entry-markdown :where(li > p) {
+  margin: 0;
+}
+
+.entry-markdown :where(strong) {
+  font-weight: 800;
+}
+
+.entry-markdown :where(em) {
+  font-style: italic;
+}
+
+.entry-markdown :where(a) {
+  color: var(--entry-markdown-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.entry-markdown :where(blockquote) {
+  margin-left: 0;
+  padding: 0.1rem 0 0.1rem 0.75rem;
+  border-left: 3px solid var(--entry-markdown-quote-border);
+  color: #667085;
+}
+
+.user .entry-markdown :where(blockquote) {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.entry-markdown :where(code) {
+  padding: 0.12rem 0.32rem;
+  border-radius: 6px;
+  background: var(--entry-markdown-code-bg);
+  color: var(--entry-markdown-code-fg);
+  font-size: 0.94em;
+  font-family:
+    ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+.entry-markdown :where(pre) {
+  overflow: auto;
+  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  background: var(--entry-markdown-pre-bg);
+  color: var(--entry-markdown-pre-fg);
+  font-family:
+    ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+    "Liberation Mono", monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.entry-markdown :where(pre code) {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.entry-markdown :where(table) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.entry-markdown :where(th, td) {
+  padding: 0.45rem 0.5rem;
+  border: 1px solid var(--entry-markdown-table-border);
+  vertical-align: top;
+}
+
+.entry-markdown :where(th) {
+  background: var(--entry-markdown-table-head-bg);
+  text-align: left;
+}
+
+.entry-markdown :where(hr) {
+  border: 0;
+  border-top: 1px solid #dfe4ec;
+}
+
+.user .entry-markdown :where(hr) {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+.entry-markdown :where(img) {
+  max-width: 100%;
+  border-radius: 10px;
 }
 
 .entry-loader {
